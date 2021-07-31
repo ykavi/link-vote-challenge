@@ -1,0 +1,18 @@
+.list-container {
+  padding: 10px 0;
+}
+.list-item {
+  display: flex;
+  flex-direction: row;
+}
+.item-vote {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.item-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 16px;
+}

@@ -1,0 +1,4 @@
+[
+    { "value": "max", "label": "Most Voted ( Z -> A )" },
+    { "value": "min", "label": "Less Voted ( A -> Z )" }
+]

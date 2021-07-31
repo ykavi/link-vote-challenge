@@ -1,3 +1,7 @@
 .submit-wrapper {
-  background-color: red;
+  background-color: #f8fbfc;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #bdc3c7;
+  display: flex;
 }

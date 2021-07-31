@@ -6,6 +6,12 @@ const StyledText = styled.p`
   margin: ${(props) => (props.margin ? props.margin : "0 0 0 0")};
   display: flex;
   align-items: center;
+  cursor: pointer;
+  color: #9ca3af;
 `;
 
-export { StyledText };
+const StyledSpan = styled.span`
+  font-size: 24px;
+  display: flex;
+`;
+export { StyledText, StyledSpan };
