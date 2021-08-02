@@ -6,6 +6,7 @@ const StyledText = styled.p`
   margin: ${(props) => (props.margin ? props.margin : "0 0 0 0")};
   display: flex;
   align-items: center;
+  line-height: 1;
 `;
 
 export { StyledText };

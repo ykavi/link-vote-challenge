@@ -1,7 +1,7 @@
 import "./point-card.css";
 import PointBox from "../../atoms/pointBox";
 import Text from "../../atoms/text";
-import VoteText from "../../atoms/voteText";
+import IconText from "../../atoms/iconText";
 
 const PointCard = () => {
   return (
@@ -16,13 +16,13 @@ const PointCard = () => {
           </div>
 
           <div className="item-vote">
-            <VoteText
+            <IconText
               size="1em"
               weight={500}
               text="Up Vote"
               iconName="TiArrowUpThick"
             />
-            <VoteText
+            <IconText
               size="1em"
               weight={500}
               text="Down Vote"

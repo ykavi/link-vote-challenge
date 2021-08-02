@@ -7,7 +7,7 @@ const StyledText = styled.p`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: #9ca3af;
+  color: ${(props) => (props.color ? props.color : "#9ca3af")};
 `;
 
 const StyledSpan = styled.span`

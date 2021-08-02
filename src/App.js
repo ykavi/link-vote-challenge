@@ -1,10 +1,18 @@
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./index.css";
-import LinkVote from "./page";
+import { Home, AddLink } from "./page";
+import Header from "./molecules/header";
 
 const App = () => {
   return (
     <div className="container">
-      <LinkVote />
+      <Header />
+      <Router>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/submit-link" component={AddLink} />
+        </Switch>
+      </Router>
     </div>
   );
 };

@@ -11,9 +11,10 @@ body {
   margin: auto;
   padding: 20px;
 }
-
 .content {
   width: 50%;
   margin: auto;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
 }
