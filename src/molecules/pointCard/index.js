@@ -4,20 +4,22 @@ import PointBox from "../../atoms/pointBox";
 import Text from "../../atoms/text";
 import IconText from "../../atoms/iconText";
 import { RiDeleteBinLine } from "react-icons/ri";
-import { setLocalStorageData } from "../../utils";
+import { getLocalStorageData, setLocalStorageData } from "../../utils";
 import ENUMS from "../../enums";
 import { Context } from "../../context/store";
 
 const PointCard = ({ data }) => {
-  const [state, dispatch] = useContext(Context);
+  const [, dispatch] = useContext(Context);
   const deleteClickHandle = (itemId) => {
-    const deleteItem = state.link.find((item) => {
+    const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
+
+    const deleteItem = linkData.find((item) => {
       return item.insertDate === itemId;
     });
-    const itemIndex = state.link.indexOf(deleteItem);
-    state.link.splice(itemIndex, 1);
-    setLocalStorageData(ENUMS.localStorageKey, state.link);
-    dispatch({ type: "DELETE_LINK", payload: state.link });
+    const itemIndex = linkData.indexOf(deleteItem);
+    linkData.splice(itemIndex, 1);
+    setLocalStorageData(ENUMS.localStorageKey, linkData);
+    dispatch({ type: "DELETE_LINK", payload: linkData });
   };
 
   return (
