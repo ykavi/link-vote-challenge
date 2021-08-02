@@ -4,15 +4,36 @@
 .list-item {
   display: flex;
   flex-direction: row;
+  margin-bottom: 34px;
+}
+.list-item:hover {
+  background-color: #f4f4f5;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.list-item:hover .delete-icon {
+  display: block;
 }
 .item-vote {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 .item-content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   margin-left: 16px;
+  min-width: 200px;
+  flex: 1;
+}
+
+.delete-icon {
+  position: relative;
+  right: 0;
+  color: #dc2626;
+  font-size: 28px;
+  right: -5px;
+  top: -15px;
+  display: none;
+  height: 30px;
 }

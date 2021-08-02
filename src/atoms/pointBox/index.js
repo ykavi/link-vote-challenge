@@ -7,7 +7,7 @@ const PointBox = ({ title, text, iconName, onClick }) => {
   return (
     <StyledContainer onClick={onClick}>
       {iconName && <Icon size={50} />}
-      {title && <Text size="4em" weight={600} text={title} />}
+      <Text size="4em" weight={600} text={title} />
       {text && (
         <Text size="1.5em" weight={400} text={text} margin="0 0 4px 0px" />
       )}
