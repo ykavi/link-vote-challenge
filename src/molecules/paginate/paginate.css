@@ -1,0 +1,20 @@
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  font-size: 26px;
+  font-weight: bold;
+  justify-content: center;
+}
+ul li {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 0 10px;
+  border: 1px solid #ffffff;
+}
+
+.rc-pagination-item-active {
+  border: solid 1px #bdc3c7;
+}
