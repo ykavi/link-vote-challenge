@@ -1,5 +1,5 @@
 import "./point-card.css";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import PointBox from "../../atoms/pointBox";
 import Text from "../../atoms/text";
 import IconText from "../../atoms/iconText";
@@ -7,14 +7,27 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import { getLocalStorageData, setLocalStorageData } from "../../utils";
 import ENUMS from "../../enums";
 import { Context } from "../../context/store";
+import Modal from "../modal";
 
 const PointCard = ({ data }) => {
   const [, dispatch] = useContext(Context);
-  const deleteClickHandle = (itemId) => {
-    const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
+  const [deleteItemId, setDeleteItemId] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
+  const deleteIconClickHandle = (removedItemId) => {
+    setDeleteItemId(removedItemId);
+    setModalVisible(true);
+  };
+
+  const changevisibility = () => {
+    setModalVisible(false);
+  };
+
+  const deleteLinkItem = () => {
+    const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
+    setModalVisible(false);
     const deleteItem = linkData.find((item) => {
-      return item.insertDate === itemId;
+      return item.insertDate === deleteItemId;
     });
     const itemIndex = linkData.indexOf(deleteItem);
     linkData.splice(itemIndex, 1);
@@ -59,13 +72,16 @@ const PointCard = ({ data }) => {
 
             <div
               className="delete-icon"
-              onClick={() => deleteClickHandle(item?.insertDate)}
+              onClick={() => deleteIconClickHandle(item?.insertDate)}
             >
               <RiDeleteBinLine />
             </div>
           </div>
         );
       })}
+      {modalVisible && (
+        <Modal visibility={changevisibility} action={deleteLinkItem} />
+      )}
     </div>
   );
 };

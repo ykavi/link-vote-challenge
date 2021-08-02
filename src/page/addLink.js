@@ -17,7 +17,7 @@ const AddLink = () => {
   const [toastMessage, setToastMessage] = useState(false);
 
   const handleBtnClick = () => {
-    if (!title.trim() || !url.trim()) return null;
+    if (!title?.trim() || !url?.trim()) return null;
 
     setToastMessage(title);
     const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
@@ -68,7 +68,7 @@ const AddLink = () => {
         />
       </ItemWrapper>
 
-      <Button action={handleBtnClick} />
+      <Button action={handleBtnClick} value="ADD" />
     </div>
   );
 };
