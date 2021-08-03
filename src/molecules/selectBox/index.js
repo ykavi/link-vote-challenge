@@ -12,13 +12,13 @@ const SelectBox = ({ options }) => {
   const handleChange = (selectedOption) => {
     setSelectedOption(selectedOption);
     const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
-    if (selectedOption?.value === "min") {
+    if (selectedOption?.value === "max") {
       linkData.sort((a, b) => {
         if (a.point === b.point) return a.insertDate - b.insertDate;
         return a.point - b.point;
       });
     }
-    if (selectedOption?.value === "max") {
+    if (selectedOption?.value === "min") {
       linkData.sort((a, b) => {
         if (b.point === a.point) return b.insertDate - a.insertDate;
         return b.point - a.point;

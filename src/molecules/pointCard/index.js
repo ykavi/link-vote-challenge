@@ -50,8 +50,8 @@ const PointCard = ({ data }) => {
     };
     linkData[changedItemIndex] = increasedPoint;
     linkData.sort((a, b) => {
-      if (a.point === b.point) return b.insertDate - a.insertDate;
-      return b.point - a.point;
+      if (a.point === b.point) return a.insertDate - b.insertDate;
+      return a.point - b.point;
     });
     setLocalStorageData(ENUMS.localStorageKey, linkData);
     dispatch({ type: "UPDATE_LINK_DATA", payload: linkData });
