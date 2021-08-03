@@ -35,6 +35,28 @@ const PointCard = ({ data }) => {
     dispatch({ type: "DELETE_LINK", payload: linkData });
   };
 
+  const voteClickHandle = (linkItemId, action) => {
+    const linkData = getLocalStorageData(ENUMS.localStorageKey) || [];
+    const changedItem = linkData.find((item) => {
+      return item.insertDate === linkItemId;
+    });
+    const changedItemIndex = linkData.indexOf(changedItem);
+    const increasedPoint = {
+      insertDate: changedItem.insertDate,
+      title: changedItem.title,
+      url: changedItem.url,
+      point:
+        action == "decrease" ? changedItem.point - 1 : changedItem.point + 1,
+    };
+    linkData[changedItemIndex] = increasedPoint;
+    linkData.sort((a, b) => {
+      if (a.point === b.point) return b.insertDate - a.insertDate;
+      return b.point - a.point;
+    });
+    setLocalStorageData(ENUMS.localStorageKey, linkData);
+    dispatch({ type: "UPDATE_LINK_DATA", payload: linkData });
+  };
+
   return (
     <div className="list-container">
       {data?.map((item, index) => {
@@ -59,6 +81,9 @@ const PointCard = ({ data }) => {
                   weight={500}
                   text="Up Vote"
                   iconName="TiArrowUpThick"
+                  onClick={() => {
+                    voteClickHandle(item?.insertDate, "increase");
+                  }}
                 />
                 <IconText
                   size="1em"
@@ -66,6 +91,9 @@ const PointCard = ({ data }) => {
                   text="Down Vote"
                   iconName="TiArrowDownThick"
                   margin="0 20px"
+                  onClick={() => {
+                    voteClickHandle(item?.insertDate, "decrease");
+                  }}
                 />
               </div>
             </div>

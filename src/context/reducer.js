@@ -5,7 +5,11 @@ const Reducer = (state, action) => {
         ...state,
         link: action.payload,
       };
-
+    case "UPDATE_LINK_DATA":
+      return {
+        ...state,
+        link: action.payload,
+      };
     default:
       return state;
   }

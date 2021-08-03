@@ -4,6 +4,7 @@ const StyledHr = styled.hr`
   border: 2px solid #bdc3c7;
   border-radius: 6px;
   margin: 20px 0;
+  background: #bdc3c7;
 `;
 
 export { StyledHr };
