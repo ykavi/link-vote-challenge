@@ -2,6 +2,7 @@ import "./point-card.css";
 import { useContext, useState } from "react";
 import PointBox from "../../atoms/pointBox";
 import Text from "../../atoms/text";
+import Toast from "../../atoms/toast";
 import IconText from "../../atoms/iconText";
 import { RiDeleteBinLine } from "react-icons/ri";
 import { getLocalStorageData, setLocalStorageData } from "../../utils";
@@ -13,6 +14,7 @@ const PointCard = ({ data }) => {
   const [, dispatch] = useContext(Context);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
 
   const deleteIconClickHandle = (removedItemId) => {
     setDeleteItemId(removedItemId);
@@ -33,6 +35,7 @@ const PointCard = ({ data }) => {
     linkData.splice(itemIndex, 1);
     setLocalStorageData(ENUMS.localStorageKey, linkData);
     dispatch({ type: "DELETE_LINK", payload: linkData });
+    setToastVisible(true);
   };
 
   const voteClickHandle = (linkItemId, action) => {
@@ -59,6 +62,10 @@ const PointCard = ({ data }) => {
 
   return (
     <div className="list-container">
+      <div className="toast-wrapper">
+        <Toast isVisibility={toastVisible} message="deleted" />
+      </div>
+
       {data?.map((item, index) => {
         return (
           <div className="list-item" key={index}>

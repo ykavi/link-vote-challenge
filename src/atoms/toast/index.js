@@ -14,7 +14,7 @@ const Toast = ({ isVisibility, message }) => {
   return (
     <StyledContainer isVisibility={visibility}>
       <p>
-        <b>{message && message.toUpperCase()}</b> added
+        <b>{message && message.toUpperCase()}</b>
       </p>
     </StyledContainer>
   );
