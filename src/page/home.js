@@ -11,11 +11,16 @@ import ENUMS from "../enums";
 
 const Home = () => {
   const [linkData, setLinkData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [state] = useContext(Context);
 
   useEffect(() => {
     setLinkData(getLocalStorageData(ENUMS.localStorageKey));
   }, [state]);
+
+  const changePage = (currentPage) => {
+    setCurrentPage(currentPage);
+  };
 
   return (
     <>
@@ -23,8 +28,14 @@ const Home = () => {
         <SubmitLink />
         <Separater />
         <SelectBox options={options} />
-        <PointCard data={linkData} />
-        <Paginate />
+        <PointCard
+          data={linkData.slice((currentPage - 1) * 5, currentPage * 5)}
+        />
+        <Paginate
+          pageSize={linkData.length}
+          action={changePage}
+          currentPage={currentPage}
+        />
       </div>
     </>
   );

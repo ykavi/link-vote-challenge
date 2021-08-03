@@ -46,7 +46,7 @@ const PointCard = ({ data }) => {
       title: changedItem.title,
       url: changedItem.url,
       point:
-        action == "decrease" ? changedItem.point - 1 : changedItem.point + 1,
+        action === "decrease" ? changedItem.point - 1 : changedItem.point + 1,
     };
     linkData[changedItemIndex] = increasedPoint;
     linkData.sort((a, b) => {
